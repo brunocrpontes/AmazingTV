@@ -1,0 +1,1 @@
+export { DefaultTheme as LightTheme } from "@react-navigation/native";
