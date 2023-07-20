@@ -1,12 +1,21 @@
-import { Show, getShowImage } from '@core/domains/show'
+import { ImageVariants, TVSeries, getTVSeriesImageUrl } from '@core/domains/tv-series'
 import { useTheme } from '@react-navigation/native'
-import { type ImageProps, Image, StyleSheet } from 'react-native'
+import { type ImageProps, Image, StyleSheet, ImageURISource, ImageRequireSource } from 'react-native'
 
 export type CoverProps = Omit<ImageProps, "source"> & {
-  show: Show
+  tvSeries: TVSeries,
+  quality?: keyof ImageVariants
 }
 
-export function Cover({ show, style, ...props }: CoverProps) {
+const getTVSeriesImageSource = (tvSeries: TVSeries, quality: keyof ImageVariants): ImageURISource | ImageRequireSource => {
+  const url = getTVSeriesImageUrl(tvSeries, quality);
+
+  if (!url) return require("@core/assets/images/no_image.jpg");
+
+  return { uri: url }
+}
+
+export function Cover({ tvSeries, quality = "medium", style, ...props }: CoverProps) {
   const { colors } = useTheme()
 
   return (
@@ -14,7 +23,7 @@ export function Cover({ show, style, ...props }: CoverProps) {
       {...props}
       resizeMode="cover"
       style={[styles.cover, { backgroundColor: colors.background }, style]}
-      source={{ uri: getShowImage(show) }}
+      source={getTVSeriesImageSource(tvSeries, quality)}
     />
   )
 }

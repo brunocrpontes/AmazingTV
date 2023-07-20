@@ -4,3 +4,7 @@ export * from './Text'
 export * from './Title'
 export * from './Icon'
 export * from './Label'
+export * from './IconButton'
+export * from './TextInput';
+export * from './Header'
+export * from './Badge'

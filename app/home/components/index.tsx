@@ -1,1 +1,2 @@
-export * from './HomeCard/HomeCard'
+export * from './TVSeriesCard'
+export * from './ShowList'

@@ -9,8 +9,8 @@ export function Title({ style, ...props }: TitleProps) {
 
 const styles = StyleSheet.create({
   title: {
-    flex: 1,
     fontWeight: "700",
-    fontSize: 18
+    fontSize: 18,
+    marginVertical: 8
   }
 })

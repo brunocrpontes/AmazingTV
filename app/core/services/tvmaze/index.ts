@@ -1,1 +1,1 @@
-export * as Shows from './shows';
+export * as TVSeriesService from './tv-series';

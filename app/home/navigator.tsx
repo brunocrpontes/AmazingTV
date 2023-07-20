@@ -1,18 +1,21 @@
 import { StackNavigationScreen } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 
-import { AmazingTVRoutes } from '../../App';
-import { HomeTabs } from './types';
-import { SearchScreen, ShowsScreen } from './screens';
+import { HomeRoutes, HomeTabs } from './types';
+import { FavoriteTVSeriesScreen, SearchTVSeriesScreen, TVSeriesScreen } from './screens';
 
 const BottomTab = createBottomTabNavigator<HomeTabs>()
 
-export const Home: StackNavigationScreen<AmazingTVRoutes, "Home"> = (props) => {
+const BOTTOM_TAB_SCREEN_OPTIONS: BottomTabNavigationOptions = {
+  headerShown: false
+}
 
+export const Home: StackNavigationScreen<HomeRoutes, "Home"> = (props) => {
   return (
-    <BottomTab.Navigator>
-      <BottomTab.Screen name="Shows" component={ShowsScreen} options={ShowsScreen.options} />
-      <BottomTab.Screen name="Search" component={SearchScreen} options={SearchScreen.options} />
+    <BottomTab.Navigator screenOptions={BOTTOM_TAB_SCREEN_OPTIONS}>
+      <BottomTab.Screen name="TVSeries" component={TVSeriesScreen} options={TVSeriesScreen.options} />
+      <BottomTab.Screen name="SearchTVSeries" component={SearchTVSeriesScreen} options={SearchTVSeriesScreen.options} />
+      <BottomTab.Screen name="FavoriteTVSeries" component={FavoriteTVSeriesScreen} options={FavoriteTVSeriesScreen.options} />
     </BottomTab.Navigator>
   )
 }

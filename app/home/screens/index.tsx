@@ -1,2 +1,3 @@
-export * from './HomeScreen/ShowsScreen'
-export * from './SearchScreen/SearchScreen'
+export * from './TVSeriesScreen'
+export * from './SearchTVSeriesScreen'
+export * from './FavoriteTVSeriesScreen'
