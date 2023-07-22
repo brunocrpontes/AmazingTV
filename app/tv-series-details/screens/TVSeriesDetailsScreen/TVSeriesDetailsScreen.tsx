@@ -1,23 +1,25 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import { StackNavigationScreen } from "@react-navigation/stack";
 import { TVSeriesDetailsRoutes } from "@tv-series-details/types";
-import { getTVSeriesCalendar, getTVSeriesGenres, getTVSeriesName, getTVSeriesRating, getTVSeriesSummary, getTVSeriesSchedule } from "@core/domains/tv-series";
-import { Badge, Cover, Label, Text, Title } from "@core/components";
-import { ScrollView } from "react-native-gesture-handler";
-import { Section } from "@tv-series-details/components";
+import { getTVSeriesName } from "@core/domains/tv-series";
 import { useTheme } from "@react-navigation/native";
 import { TVSeriesEpisodesSection, TVSeriesHeader, TVSeriesScheduleSection, TVSeriesSummarySection } from "./components";
+import { Episode } from "@core/domains/episodes";
 
-export const TVSeriesDetailsScreen: StackNavigationScreen<TVSeriesDetailsRoutes, "TVSeriesDetails"> = ({ route }) => {
+export const TVSeriesDetailsScreen: StackNavigationScreen<TVSeriesDetailsRoutes, "TVSeriesDetails"> = ({ navigation, route }) => {
   const { colors } = useTheme()
   const tvSeries = route.params.TVSeries;
 
+  const onPressEpisode = (episode: Episode) => {
+    navigation.navigate("TVSeriesEpisodeDetails", { Episode: episode });
+  }
+
   return (
-    <ScrollView contentContainerStyle={[styles.container, { backgroundColor: colors.card }]}>
+    <ScrollView style={{ backgroundColor: colors.card }} contentContainerStyle={styles.container}>
       <TVSeriesHeader tvSeries={tvSeries} />
       <TVSeriesScheduleSection tvSeries={tvSeries} />
       <TVSeriesSummarySection tvSeries={tvSeries} />
-      <TVSeriesEpisodesSection tvSeries={tvSeries} />
+      <TVSeriesEpisodesSection tvSeries={tvSeries} onPressEpisode={onPressEpisode} />
     </ScrollView>
   )
 }

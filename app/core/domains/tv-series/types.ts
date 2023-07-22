@@ -37,10 +37,12 @@ export type Externals = {
   imdb: string;
 }
 
-export type ImageVariants = {
+export type TVSeriesImage = {
   medium: string;
   original: string;
 }
+
+export type TVSeriesImageQuality = keyof TVSeriesImage;
 
 export type Links = {
   self: {
@@ -71,8 +73,13 @@ export type TVSeries = {
   webChannel?: WebChannel;
   dvdCountry?: Country;
   externals: Externals;
-  image?: ImageVariants;
+  image?: TVSeriesImage;
   summary?: string;
   updated: number;
   _links: Links;
+}
+
+export type SearchTVSeries = {
+  score: number;
+  show: TVSeries;
 }

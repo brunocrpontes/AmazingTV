@@ -21,7 +21,7 @@ export function TVSeriesHeader({ tvSeries, style, ...props }: TVSeriesHeaderProp
           {getTVSeriesCalendar(tvSeries)}
         </Label>
         <View style={styles.badges}>
-          {genres.map(genre => (<Badge>{genre}</Badge>))}
+          {genres.map(genre => (<Badge key={genre}>{genre}</Badge>))}
         </View>
       </View>
     </View>

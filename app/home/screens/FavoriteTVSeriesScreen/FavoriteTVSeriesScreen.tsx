@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { CompositeBottomTabNavigationScreenWith } from '@react-navigation/bottom-tabs';
 import { Header, Icon } from '@core/components'
-import { type TVSeries, getTVSeriesId } from '@core/domains/tv-series';
+import type { TVSeries } from '@core/domains/tv-series';
 import { useFavoriteTVSeries, useFavoriteTVSeriesActions } from '@core/contexts/favorite-series';
 import { HomeTabs } from "@home/types";
 import { TVSeriesList } from '@home/components'
@@ -26,21 +26,18 @@ export const FavoriteTVSeriesScreen: FavoriteTVSeriesScreen = ({ navigation }) =
   }
 
   return (
-    <View>
-      <Header />
-      <TVSeriesList
-        tvSeries={favoriteTVSeries}
-        favoriteTVSeriesIds={favoriteTVSeriesIds}
-        onPressTVSeries={onPressTVSeries}
-        onPressFavoriteTVSeries={onPressFavoriteTVSeries}
-        initialNumToRender={50}
-      />
-    </View>
-
+    <TVSeriesList
+      tvSeries={favoriteTVSeries}
+      favoriteTVSeriesIds={favoriteTVSeriesIds}
+      onPressTVSeries={onPressTVSeries}
+      onPressFavoriteTVSeries={onPressFavoriteTVSeries}
+      initialNumToRender={50}
+    />
   );
 }
 
 FavoriteTVSeriesScreen.options = {
+  title: "Your favorites",
   tabBarLabel: "Favorites",
   tabBarIcon: (props) => <Icon {...props} name="favorite" />
 }

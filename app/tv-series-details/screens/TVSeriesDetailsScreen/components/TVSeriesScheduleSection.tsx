@@ -15,9 +15,11 @@ export function TVSeriesScheduleSection({ tvSeries, ...props }: TVSeriesSchedule
 
   const { days, time } = schedule;
 
+  if (days.length === 0) return null;
+
   return (
     <Section label="Schedule" {...props}>
-      {days.map(day => <Label icon="schedule" color={colors.text}>{day} at {time}</Label>)}
+      {days.map(day => <Label key={day} icon="schedule" color={colors.text}>{day} at {time}</Label>)}
     </Section>
   );
 }

@@ -7,6 +7,10 @@ export type TVSeriesSummarySectionProps = Omit<SectionProps, "label"> & {
 }
 
 export function TVSeriesSummarySection({ tvSeries, ...props }: TVSeriesSummarySectionProps) {
+  const summary = getTVSeriesSummary(tvSeries);
+
+  if (!summary) return null;
+
   return (
     <Section label="Summary" {...props}>
       <Text>

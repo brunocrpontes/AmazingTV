@@ -1,4 +1,5 @@
-import type { ImageVariants, TVSeries } from './types'
+import { removeHtmlTags } from '@core/strings';
+import type { TVSeries, TVSeriesImageQuality } from './types'
 
 export const getTVSeriesId = (tvSeries: TVSeries) => tvSeries.id;
 
@@ -45,7 +46,7 @@ export const getTVSeriesCalendar = (tvSeries: TVSeries) => {
   return `${releaseYear} - ${endYear}`;
 }
 
-export const getTVSeriesImageUrl = (tvSeries: TVSeries, quality: keyof ImageVariants = "medium") => {
+export const getTVSeriesImageUrl = (tvSeries: TVSeries, quality: TVSeriesImageQuality = "medium") => {
   const images = tvSeries.image;
   if (!images) return;
 
@@ -57,15 +58,9 @@ export const getTVSeriesGenres = (tvSeries: TVSeries) => tvSeries.genres;
 export const getTVSeriesSchedule = (tvSeries: TVSeries) => tvSeries.schedule;
 
 export const getTVSeriesSummary = (tvSeries: TVSeries) => {
-  if (tvSeries.summary) {
-    return sanitizeSummary(tvSeries.summary)
-  }
+  const summary = tvSeries.summary;
 
-  return ""
-}
+  if (!summary) return "";
 
-const sanitizeSummary = (summary: string = "") => {
-  const regex_tag = /(<\/?\S+\/?>)/g
-
-  return summary.replace(regex_tag, "");
+  return removeHtmlTags(summary);
 }

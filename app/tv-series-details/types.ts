@@ -1,3 +1,4 @@
+import { Episode } from "@core/domains/episodes";
 import { TVSeries } from "@core/domains/tv-series";
 
 export type TVSeriesDetailsRoutes = {
@@ -5,9 +6,6 @@ export type TVSeriesDetailsRoutes = {
     TVSeries: TVSeries,
   };
   TVSeriesEpisodeDetails: {
-    EpisodeId: number;
+    Episode: Episode;
   };
-  TVSeriesPersonDetails: {
-    PersonId: number;
-  }
 }

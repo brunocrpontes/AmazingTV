@@ -7,7 +7,8 @@ import { FavoriteTVSeriesScreen, SearchTVSeriesScreen, TVSeriesScreen } from './
 const BottomTab = createBottomTabNavigator<HomeTabs>()
 
 const BOTTOM_TAB_SCREEN_OPTIONS: BottomTabNavigationOptions = {
-  headerShown: false
+  freezeOnBlur: true,
+  lazy: true
 }
 
 export const Home: StackNavigationScreen<HomeRoutes, "Home"> = (props) => {

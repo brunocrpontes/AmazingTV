@@ -1,6 +1,6 @@
 import { StyleSheet, View, ViewProps } from "react-native"
 import { useTheme } from "@react-navigation/native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 
 export type HeaderProps = ViewProps
 
@@ -8,13 +8,13 @@ export const MIN_HEADER_HEIGHT = 48;
 
 export function Header({ style, ...props }: HeaderProps) {
   const { colors } = useTheme()
-  const { top: topInset } = useSafeAreaInsets()
 
   return (
-    <View
+    <SafeAreaView
+      edges={["top"]}
       style={[
         styles.container,
-        { minHeight: MIN_HEADER_HEIGHT + topInset, paddingTop: topInset, backgroundColor: colors.card, borderBottomColor: colors.border, shadowColor: colors.text },
+        { backgroundColor: colors.card, borderBottomColor: colors.border, shadowColor: colors.text },
         style
       ]}
       {...props}

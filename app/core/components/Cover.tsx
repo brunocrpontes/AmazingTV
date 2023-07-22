@@ -1,13 +1,13 @@
-import { ImageVariants, TVSeries, getTVSeriesImageUrl } from '@core/domains/tv-series'
+import { TVSeriesImageQuality, TVSeries, getTVSeriesImageUrl } from '@core/domains/tv-series'
 import { useTheme } from '@react-navigation/native'
 import { type ImageProps, Image, StyleSheet, ImageURISource, ImageRequireSource } from 'react-native'
 
 export type CoverProps = Omit<ImageProps, "source"> & {
   tvSeries: TVSeries,
-  quality?: keyof ImageVariants
+  quality?: TVSeriesImageQuality
 }
 
-const getTVSeriesImageSource = (tvSeries: TVSeries, quality: keyof ImageVariants): ImageURISource | ImageRequireSource => {
+const getTVSeriesImageSource = (tvSeries: TVSeries, quality: TVSeriesImageQuality): ImageURISource | ImageRequireSource => {
   const url = getTVSeriesImageUrl(tvSeries, quality);
 
   if (!url) return require("@core/assets/images/no_image.jpg");

@@ -3,11 +3,11 @@ import { useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, ParamListBase } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { Theme } from '@core/theme';
 import { FavoriteTVSeriesProvider } from '@core/contexts/favorite-series';
 import { Home, HomeRoutes } from '@home';
-import { TVSeriesDetailsScreen, TVSeriesEpisodeDetailsScreen, TVSeriesPersonDetailsScreen, TVSeriesDetailsRoutes } from '@tv-series-details'
+import { TVSeriesDetailsScreen, TVSeriesEpisodeDetailsScreen, type TVSeriesDetailsRoutes } from '@tv-series-details'
 
 type AmazingTVRoutes = HomeRoutes & TVSeriesDetailsRoutes;
 
@@ -38,11 +38,6 @@ export default function App() {
               name="TVSeriesEpisodeDetails"
               component={TVSeriesEpisodeDetailsScreen}
               options={TVSeriesEpisodeDetailsScreen.options}
-            />
-            <Stack.Screen
-              name="TVSeriesPersonDetails"
-              component={TVSeriesPersonDetailsScreen}
-              options={TVSeriesPersonDetailsScreen.options}
             />
           </Stack.Navigator>
         </NavigationContainer>

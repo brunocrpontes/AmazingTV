@@ -10,10 +10,14 @@ export type Links = {
   }
 }
 
-export type ImageVariants = {
+export type EpisodeImage = {
   medium: string;
   original: string;
 }
+
+export type EpisodeImageQuality = keyof EpisodeImage;
+
+export type Season = Episode[];
 
 export type Episode = {
   id: number,
@@ -26,8 +30,8 @@ export type Episode = {
   airtime: string,
   airstamp: string,
   runtime: number,
-  rating: Rating,
-  image: ImageVariants,
+  rating?: Rating,
+  image: EpisodeImage,
   summary: string,
   _links: Links
 }

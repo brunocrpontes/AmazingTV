@@ -1,2 +1,2 @@
 export * from './TVSeriesCard'
-export * from './ShowList'
+export * from './TVSeriesList'
